@@ -23,6 +23,8 @@ class UsuarioControll extends BaseController
         }
 
         $this->usuarioModel->insert($usuario);
+
+        return redirect()->back()->with('success', 'Usuário criado com sucesso.');
     }
 
     public function read()
@@ -43,8 +45,29 @@ class UsuarioControll extends BaseController
             return redirect()->back()->with('error', 'Usuário não encontrado.');
         }
 
-        if($usuario['senha'] !== $this->usuarioModel->where('id', $usuario['id'])->first()['senha']) {
+        if($usuario['senha'] !== $this->usuarioModel->where('email', $usuario['email'])->first()['senha']) {
             return redirect()->back()->with('error', 'Senha incorreta.');
         }
+
+        $this->ususarioModel->where('email', $usuario['email'])->update($usuario);
+
+        return redirect()->back()->with('success', 'Usuário atualizado com sucesso.');
+    }
+
+    public function delete()
+    {
+        $usuario = $this->request->getPost('dados');
+
+        if(empty($usuario)) {
+            return redirect()->back()->with('error', 'Dados do usuário não fornecidos.');
+        }
+
+        if($usuario['senha'] !== $this->usuarioModel->where('email', $usuario['email'])->first()['senha']) {
+            return redirect()->back()->with('error', 'Senha incorreta.');
+        }
+
+        $this->usuarioModel->where('email', $usuario['email'])->delete();
+
+        return redirect()->back()->with('success', 'Usuário deletado com sucesso.');
     }
 }
