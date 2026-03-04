@@ -14,7 +14,7 @@ class UsuarioControll extends BaseController
         $this->usuarioModel = new UsuarioModel();
     }
 
-    public function creat()
+    public function create()
     {
         $usuario = $this->request->getPost('dados');
 

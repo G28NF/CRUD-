@@ -23,7 +23,7 @@ class UsuarioModel extends Model
         'nascimento'    => 'required|date',
         'email'         => 'required|string|min_length[9]|max_length[250]|is_unique[usuarios.email]',
         'senha'         => 'required|numeric|min_length[6]|max_length[250]',
-        'cep'           => 'required|string|regex[/^[0-9]{5}-[0-9]{3}$/]',
+        'cep'           => 'required|string|min_length[10]|max_length[10]',
         'logradouro'    => 'required|string|max_length[250]',
         'numero'        => 'required|string|max_length[10]',
         'complemento'   => 'permit_empty|string|max_length[250]',
