@@ -3,7 +3,7 @@
 namespace App\Controllers;
 use App\Models\UsuarioModel;
 
-class UsuarioControll extends BaseController
+class UsuarioController extends BaseController
 {
     public function index()
     {
