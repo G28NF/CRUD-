@@ -5,6 +5,10 @@ use App\Models\UsuarioModel;
 
 class UsuarioControll extends BaseController
 {
+    public function index()
+    {
+        return view('home');
+    }
     public function __construct()
     {
         $this->usuarioModel = new UsuarioModel();
